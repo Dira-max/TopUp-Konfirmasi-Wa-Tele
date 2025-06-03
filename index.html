@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Top Up Game Online</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #f0f0f0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .container {
+        background: #1a2630;
+        border-radius: 16px;
+        max-width: 480px;
+        width: 100%;
+        padding: 40px 40px;
+        box-shadow: 0 25px 60px rgba(12,41,58,0.8);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    h1 {
+        text-align: center;
+        color: #36d7b7;
+        margin-bottom: 12px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        animation: slideIn 0.5s ease-in-out;
+    }
+    @keyframes slideIn {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    p.subtitle {
+        text-align: center;
+        margin-bottom: 32px;
+        color: #4ac8c4;
+        font-weight: 600;
+        font-size: 1.15rem;
+        font-style: italic;
+        animation: fadeIn 0.5s ease-in-out 0.2s forwards;
+    }
+    label {
+        display: block;
+        margin-top: 18px;
+        font-weight: 600;
+        color: #36d7b7;
+        margin-bottom: 6px;
+        font-size: 1rem;
+    }
+    select, input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid #36d7b7;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+        background-color: #12252d;
+        color: #e1f0ec;
+        font-weight: 500;
+    }
+    select:focus, input[type="text"]:focus, input[type="number"]:focus {
+        border-color: #1ee6ce;
+        outline: none;
+        box-shadow: 0 0 12px #38fff1cc;
+        background-color: #10303a;
+    }
+    button {
+        margin-top: 30px;
+        width: 100%;
+        background: #1ee6ce;
+        color: #044d49;
+        border: none;
+        padding: 16px 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+        border-radius: 14px;
+        cursor: pointer;
+        box-shadow: 0 10px 30px #14beb8cc;
+        transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    button:hover, button:focus {
+        background: #14beb8;
+        box-shadow: 0 12px 32px #0fa9a4cc;
+        outline: none;
+        color: #e0f6f4;
+        transform: scale(1.05);
+    }
+    .confirmation {
+        margin-top: 36px;
+        background: #0f3940;
+        border-radius: 14px;
+        padding: 24px 28px;
+        font-size: 1rem;
+        color: #1ee6ce;
+        line-height: 1.6;
+        border: 2px solid #1ee6ce;
+        white-space: pre-wrap;
+        word-break: break-word;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    .contact-links {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+        gap: 26px;
+    }
+    .contact-links a {
+        text-decoration: none;
+        color: white;
+        padding: 15px 32px;
+        border-radius: 50px;
+        font-weight: 700;
+        box-shadow: 0 7px 18px rgba(30,230,206,0.9);
+        transition: background-color 0.3s, box-shadow 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 1.1rem;
+    }
+    .contact-links a.whatsapp {
+        background: #25d366;
+        box-shadow: 0 7px 20px #1ebe56;
+    }
+    .contact-links a.whatsapp:hover {
+        background: #1ebe56;
+        box-shadow: 0 9px 24px #169c43;
+    }
+    .contact-links a.telegram {
+        background: #0088cc;
+        box-shadow: 0 7px 20px #007ab8;
+    }
+    .contact-links a.telegram:hover {
+        background: #007ab8;
+        box-shadow: 0 9px 24px #006aa3;
+    }
+    .contact-links svg {
+        fill: white;
+        width: 22px;
+        height: 22px;
+    }
+    #confirmation-message {
+        background:#094748; 
+        padding:16px 20px; 
+        border-radius:12px; 
+        overflow-x:auto; 
+        font-family: 'Courier New', Courier, monospace;
+        margin-top: 14px;
+        color: #a0f9e4;
+    }
+    .footer {
+        margin-top: 42px;
+        font-size: 0.9rem;
+        text-align: center;
+        color: #28b5a0;
+        user-select: none;
+    }
+    @media (max-width: 520px) {
+        .container {
+            padding: 28px 30px;
+        }
+        button, .contact-links a {
+            font-size: 1rem;
+            padding: 14px 26px;
+        }
+    }
+</style>
+</head>
+<body>
+    <main class="container" role="main" aria-label="Formulir Top Up Game dan Produk">
+        <h1>Top Up Game Online</h1>
+        <p class="subtitle">Pilih game dan produk, isi id game, pilih metode pembayaran, dan konfirmasi via WhatsApp atau Telegram.</p>
+        <form id="topup-form" aria-describedby="form-desc" novalidate>
+            <label for="game">Pilih Game</label>
+            <select id="game" name="game" aria-required="true" required>
+                <option value="" disabled selected>-- Pilih Game --</option>
+                <option value="Free Fire">Free Fire</option>
+                <option value="Mobile Legends">Mobile Legends</option>
+                <option value="PUBG Mobile">PUBG Mobile</option>
+            </select>
+            
+            <label for="product">Pilih Produk</label>
+            <select id="product" name="product" aria-required="true" required>
+                <option value="" disabled selected>-- Pilih Produk --</option>
+            </select>
+
+            <label for="userid">ID Pengguna</label>
+            <input type="text" id="userid" name="userid" placeholder="Masukkan ID pengguna" aria-required="true" required pattern=".{3,}" title="Minimal 3 karakter" />
+
+            <label for="payment">Metode Pembayaran</label>
+            <select id="payment" name="payment" aria-required="true" required>
+                <option value="" disabled selected>-- Pilih Metode Pembayaran --</option>
+                <option value="Dana">Dana</option>
+                <option value="OVO">OVO</option>
+                <option value="GoPay">GoPay</option>
+                <option value="QRIS">QRIS</option>
+            </select>
+
+            <button type="submit" aria-label="Lanjutkan Top Up">Lanjutkan Top-Up</button>
+        </form>
+
+        <section id="confirmation-section" class="confirmation" style="display:none;" aria-live="polite" aria-atomic="true">
+            <p>Terima kasih atas pesanan top-up Anda. Silakan konfirmasi pembayaran melalui salah satu platform berikut:</p>
+            <div class="contact-links" id="contact-links" role="list" aria-label="Tautan konfirmasi pembayaran"></div>
+            <p><strong>Pesan konfirmasi yang dikirim:</strong></p>
+            <pre id="confirmation-message"></pre>
+        </section>
+
+        <footer class="footer" aria-label="Hak cipta">
+            © 2025 Top Up Game Online Indonesia. Semua hak cipta dilindungi.
+        </footer>
+    </main>
+<script>
+    const form = document.getElementById('topup-form');
+    const confirmationSection = document.getElementById('confirmation-section');
+    const contactLinksContainer = document.getElementById('contact-links');
+    const confirmationMessagePre = document.getElementById('confirmation-message');
+
+    const whatsappNumber = '6287784555835';
+    const telegramUsername = 'Dedexzs';
+
+    const productSelect = document.getElementById('product');
+    const gameSelect = document.getElementById('game');
+
+    const productOptions = {
+    "Free Fire": ["70 Diamond", "140 Diamond", "355 Diamond", "720 Diamond"],
+    "Mobile Legends": ["86 Diamond", "172 Diamond", "257 Diamond", "706 Diamond"],
+    "PUBG Mobile": ["60 UC", "325 UC", "660 UC", "1800 UC"]
+};
+
+    gameSelect.addEventListener('change', () => {
+        const selectedGame = gameSelect.value;
+        const products = productOptions[selectedGame] || [];
+
+        productSelect.innerHTML = '<option value="" disabled selected>-- Pilih Produk --</option>';
+
+        products.forEach(product => {
+            const opt = document.createElement('option');
+            opt.value = product;
+            opt.textContent = product;
+            productSelect.appendChild(opt);
+        });
+    });
+
+    function encodeMessage(message) {
+        return encodeURIComponent(message);
+    }
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const game = form.game.value;
+        const userid = form.userid.value.trim();
+        const product = form.product.value;
+        const payment = form.payment.value;
+
+        if (!game || !userid || !product || !payment) {
+            alert('Mohon lengkapi semua data dengan benar.');
+            return;
+        }
+
+        const confirmationMsg =
+`Halo Admin Top Up,
+
+Saya sudah memesan 
+detail sebagai berikut:
+- 🎮Game: ${game}
+- 🌀ID Game: ${userid}
+- 📦Produk: ${product}
+- 💳Metode Pembayaran: ${payment}
+
+Mohon konfirmasi 
+dan proses segera
+Terima kasih.
+`;
+
+        contactLinksContainer.innerHTML = '';
+
+        const waLink = `https://wa.me/${whatsappNumber}?text=${encodeMessage(confirmationMsg)}`;
+        const waBtn = document.createElement('a');
+        waBtn.href = waLink;
+        waBtn.target = '_blank';
+        waBtn.rel = 'noopener noreferrer';
+        waBtn.className = 'whatsapp';
+        waBtn.role = 'listitem';
+        waBtn.setAttribute('aria-label', 'Konfirmasi pembayaran melalui WhatsApp');
+        waBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.89 11.89 0 0012 0C5.37 0 0 5.37 0 12a11.89 11.89 0 001.96 6.06L0 24l5.94-1.89a11.92 11.92 0 006.06 1.92c6.63 0 12-5.37 12-12 0-3.22-1.26-6.24-3.48-8.61zM12 21.75c-1.87 0-3.68-.53-5.23-1.53L5.25 19l-3.1.98 1-3.02v-.02l.02-.06C2.36 13.39 2.25 12.7 2.25 12c0-5.38 4.37-9.75 9.75-9.75 2.59 0 5.02 1.01 6.83 2.83 1.82 1.82 2.82 4.23 2.83 6.82.02 5.37-4.36 9.75-9.75 9.75zm5.1-7.16c-.09-.16-.33-.27-.7-.47-.36-.21-2.1-1.04-2.42-1.15-.32-.11-.55-.16-.78.16-.23.31-.9 1.15-1.1 1.38-.2.23-.39.26-.72.09-.33-.18-1.39-.52-2.64-1.62-.98-.88-1.64-1.97-1.83-2.29-.19-.33-.02-.51.14-.68.14-.14.33-.38.5-.57.16-.19.21-.32.32-.53.11-.21.05-.39-.03-.55-.09-.16-.78-1.88-1.07-2.56-.28-.67-.57-.58-.78-.59-.2-.01-.43-.01-.66-.01-.22 0-.57.08-.87.4-.3.32-1.15 1.13-1.15 2.75s1.18 3.19 1.34 3.41c.16.23 2.31 3.53 5.6 4.95.78.34 1.39.54 1.87.69.79.25 1.51.21 2.08.13.63-.09 1.92-.78 2.19-1.53.27-.74.27-1.37.19-1.53z"/></svg>
+            WhatsApp
+        `;
+        contactLinksContainer.appendChild(waBtn);
+
+        const tgLink = `https://t.me/${telegramUsername}`;
+        const tgBtn = document.createElement('a');
+        tgBtn.href = tgLink;
+        tgBtn.target = '_blank';
+        tgBtn.rel = 'noopener noreferrer';
+        tgBtn.className = 'telegram';
+        tgBtn.role = 'listitem';
+        tgBtn.setAttribute('aria-label', 'Konfirmasi pembayaran melalui Telegram');
+        tgBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.643 4.937c-.293-.214-1.464-.577-3.034-1.135-3.17-.967-5.28-1.415-6.335-1.416-1.43 0-2.304 1.066-2.304 2.495 0 1.165.43 1.876 1.197 2.32.414.276.927.435 1.64.58 1.57.352 2.76.94 3.564 1.763-.035.018-.064.038-.1.056-.704.404-1.393.794-2.07 1.166-.54.304-1.01.44-1.412.438a3.475 3.475 0 01-1.42-.327c-.404-.222-2.196-1.036-5.924-2.547-6.184-2.704-8.933-4.037-9.236-4.113a.407.407 0 00-.255.14.438.438 0 00.086.518c.035.04 1.865 1.746 5.523 4.828l1.642 1.35-1.438 4.684c-.25.813-.464 1.47-.627 1.97a8.136 8.136 0 003.335-.9c1.378-.73 2.59-1.383 3.635-1.96 1.181-.662 2.119-1.15 2.813-1.466a11.42 11.42 0 002.706-2.09c.905-.894 1.37-1.544 1.39-1.95.027-.54-.14-.92-.5-1.14z"/></svg>
+            Telegram
+        `;
+        contactLinksContainer.appendChild(tgBtn);
+
+        confirmationMessagePre.textContent = confirmationMsg;
+        confirmationSection.style.display = 'block';
+        confirmationSection.scrollIntoView({behavior: 'smooth'});
+    });
+</script>
+</body>
+</html>
